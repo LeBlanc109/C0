@@ -2,9 +2,10 @@
 
 int main(){
 
-    //Comments are written with two-forward slashes!
-
-    printf("Buttcheeks\n");
-    printf("It's fire!");
+    float gpa;
+    printf("Enter your gpa: \n");
+    scanf("%f", &gpa);
+    printf("Your gpa is %f", gpa);
+   
     return 0;
 }
