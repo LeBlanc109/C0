@@ -1,43 +1,34 @@
 #include <stdio.h>
-#include <math.h>
+#include <time.h>
 
 int main(){
 
-    /*Compound Interest Calculator
-    FV = P (1 + [r / n])^(nt)
+    /*Calculate your age based off the current year
+    1.First we need to get the users age
+    2. Now we need to get the year
+        what header file? isn't it time.h
+        
 
-    FV: Future Value, or the ending value
-    P: Principal, or starting value
-    r: interest rate
-    n: number of compounding periods per year (yearly = 1)
-    t: time in years of the investment or loan
-
-
-    Let's do: Altria! My Favorite stock!
-    futureValue = prinicpal * pow((1 + (intRate/compRate)), (compRate * years))
     */
-   float futureValue = 0.0f;
-   float principal = 0.0f;
-   float intRate = 0.0f;
-   int compRate = 1;
-   int years = 0;
 
-   printf("Enter in the principal amount of money you want to invest: \n");
-   scanf("%f", &principal);
+    int user_age = 0;
+    printf("Enter your age: ");
+    scanf("%d", &user_age);
 
-   printf("With a principal value of: %.2f, what is the interest rate: \n", principal);
-   scanf("%f", &intRate);
+    //Use Struct to find the local time
+    time_t now = time(NULL);
+    struct tm now_t = *localtime(&now);
 
-   // don't forget to convert percentage to decimal form if user entered 6.7 needs to technically become .067
-    intRate /= 100.0f;
+    //Once we have the current time stored in a variable,,, let's get the year: tm_year
+    int currentYear = now_t.tm_year + 1900;
 
-   printf("With a principal value of: %.2f, and an interest rate of: %.3f%%, for how many years would you like to compound: \n", principal, intRate);
-   scanf("%d", &years);
+    //calculate year born 
+    int yearborn = currentYear - user_age;
 
-   //caluclate
-   futureValue = principal * powf((1.0f + (intRate / compRate)), (float)(compRate * years));
+    //print out the current year
+    printf("It is currently: %d\n", currentYear);
+    printf("You were born in: %d\n ", yearborn);
 
-   printf("\nFuture Value: $%.2f\n10", futureValue);
-    
+
    return 0;
 }
