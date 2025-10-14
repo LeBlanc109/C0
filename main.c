@@ -1,34 +1,23 @@
 #include <stdio.h>
-#include <time.h>
 
 int main(){
+    //Today we gon work on, the C Files section
 
-    /*Calculate your age based off the current year
-    1.First we need to get the users age
-    2. Now we need to get the year
-        what header file? isn't it time.h
-        
+    //declare a pointer type of file
+    FILE *fptr;
 
-    */
+    //use the fopen function
+    // (filename.txt, w- writes to file, a- appends data to a new file, r- reads from file)
+    fptr = fopen("filename.txt", "w");
 
-    int user_age = 0;
-    printf("Enter your age: ");
-    scanf("%d", &user_age);
+    //now we can write to the file using fprintf()
+    fprintf(fptr, "My first attempt writing to a file using the C programming language");
 
-    //Use Struct to find the local time
-    time_t now = time(NULL);
-    struct tm now_t = *localtime(&now);
+    //always be sure to close the file
+    fclose(fptr);
 
-    //Once we have the current time stored in a variable,,, let's get the year: tm_year
-    int currentYear = now_t.tm_year + 1900;
-
-    //calculate year born 
-    int yearborn = currentYear - user_age;
-
-    //print out the current year
-    printf("It is currently: %d\n", currentYear);
-    printf("You were born in: %d\n ", yearborn);
-
+    //When we write to a file that already exists, the OLD content is deleted, and the new content is inserted
+    //if we want to add without deleting, then we use the "a", instead of "w"
 
    return 0;
 }
